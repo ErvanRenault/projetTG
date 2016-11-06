@@ -1,4 +1,4 @@
-package com.mycompany.myapp.config;
+	package com.mycompany.myapp.config;
 
 import com.mycompany.myapp.security.*;
 import com.mycompany.myapp.config.JHipsterProperties;

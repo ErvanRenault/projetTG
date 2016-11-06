@@ -1,0 +1,37 @@
+<div ng-app="myApp" ng-controller="MailController">
+
+    <div class="table-responsive">
+        <button ng-click="findStudents()">Students</button>
+        <table ng-show="visibleStudent">
+            <tr  ng-repeat="student in students">
+            	<form action =>
+                <td>{{student.firstName + " " + student.lastName}}
+                	<input type="checkbox" name={{student.id}} value={} ng-click="listMails(student.mail)">
+                </td>
+                	</form>
+            </tr>
+        </table>
+    </div>
+    
+   
+
+	<div>
+		<textarea ng-model="object">
+	
+		</textarea>
+	</div>
+	
+	<div>
+		<textarea ng-model="content">
+	
+		</textarea>
+	</div>
+	
+	 <button ng-click ="sendMail()">Send mail</button>
+
+</div>
+
+
+
+
+

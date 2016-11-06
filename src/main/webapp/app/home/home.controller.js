@@ -5,7 +5,7 @@
         .module('taaGliProjectApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state'];
+    HomeController.$inject = ['$scope', 'Principal', '$state'];
 
     function HomeController ($scope, Principal, LoginService, $state) {
         var vm = this;
