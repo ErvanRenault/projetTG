@@ -14,7 +14,7 @@ Hide ng-cloak on page load, https://docs.angularjs.org/api/ng/directive/ngCloak
 /* ==========================================================================
 Developement Ribbon
 ========================================================================== */
-.ribbon {
+/**.ribbon {
     background-color: #a00;
     box-shadow: 0 0 10px #888;
     left: -3.5em;
@@ -45,7 +45,7 @@ Developement Ribbon
     text-decoration: none;
     text-shadow: 0 0 5px #444;
     pointer-events: none;
-}
+}**/
 
 /* ==========================================================================
 Version number in navbar
@@ -97,12 +97,30 @@ Main page styles
     letter-spacing: -1px;
 }
 
-.hipster {
+.istic {
     display: inline-block;
     width: 347px;
-    height: 497px;
-    background: url("../images/hipster.png") no-repeat center top;
+    height: 150px;
+    background: url("../images/Istic.png") no-repeat center top;
     background-size: contain;
+}
+
+.rennes {
+    display: inline-block;
+    width: 347px;
+    height: 100px;
+    background: url("../images/univrennes1.svg.png") no-repeat center top;
+    background-size: contain;
+
+}
+
+.deathstar {
+    display: inline-block;
+    width: 347px;
+    height: 100px;
+    background: url("../images/deathstar.png") no-repeat center top;
+    background-size: contain;
+
 }
 
 /* wait autoprefixer update to allow simple generation of high pixel density media query */

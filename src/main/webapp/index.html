@@ -6,6 +6,12 @@
     <title>TaaGliProject</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <link rel="icon" type=".text/css/png" href="./content/images/vader_favicon.png" />
+    <audio  autoplay loop>
+        <source src="./content/music/imperialmarch.mp3" type="audio/mpeg" />
+        <source src="./content/music/imperialmarch.wav" type="audio/wav" />
+        <p>This content is displayed by browsers that don't recognize the audio element.</p>
+    </audio>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css content/css/vendor.css -->
     <!-- bower:css -->
@@ -21,15 +27,11 @@
     <!--[if lt IE 9]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <page-ribbon></page-ribbon>
+    <!--<page-ribbon></page-ribbon>-->
     <div ui-view="navbar" ng-cloak></div>
     <div class="container">
         <div class="well" ui-view="content">
             <!-- Angular views -->
-        </div>
-
-        <div class="footer" ng-cloak>
-            <p>This is your footer</p>
         </div>
     </div>
 
@@ -61,6 +63,7 @@
     <script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
     <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
     <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <!-- endinject -->
     <!-- endbuild -->
 
@@ -82,6 +85,13 @@
     <script src="app/services/auth/auth.service.js"></script>
     <script src="app/services/auth/activate.service.js"></script>
     <script src="app/services/auth/account.service.js"></script>
+    <script src="app/pageEnquete/pageEnquete.service.js"></script>
+    <script src="app/pageEnquete/pageEnquete.state.js"></script>
+    <script src="app/pageEnquete/pageEnquete.controller.js"></script>
+    <script src="app/pageEnquete/formEnquete.controller.js"></script>
+    <script src="app/mail/mail.controller.js"></script>
+    <script src="app/mail/mail.state.js"></script>
+    <script src="app/mail/mail.html"></script>
     <script src="app/layouts/navbar/navbar.controller.js"></script>
     <script src="app/layouts/navbar/active-link.directive.js"></script>
     <script src="app/layouts/error/error.state.js"></script>
