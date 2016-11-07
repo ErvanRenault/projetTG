@@ -16,6 +16,12 @@
                         <span class="hidden-sm">Home</span>
                     </a>
                 </li>
+                <li ng-class="{active: vm.$state.includes('search')}" ng-switch-when="true" ui-sref-active="active">
+                    <a ui-sref="search" ng-click="vm.collapseNavbar()">
+                        <span class="glyphicon glyphicon-search"></span>
+                        <span class="hidden-sm">Search</span>
+                    </a>
+                </li>
                 <li ui-sref-active="active" has-authority="ROLE_STUDENT">
                     <a ui-sref="pageEnquete" ng-click="vm.collapseNavbar()" >
                         <span class="glyphicon glyphicon-search"></span>
