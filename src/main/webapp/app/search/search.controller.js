@@ -17,6 +17,11 @@
         $scope.birthdate = "";
         $scope.birthdateope = "";
         $scope.datePickerOpenStatus = {};
+        $scope.hide = 'student';
+        $scope.show = function (str) {
+            $scope.hide = str;
+            alert($scope.hide);
+        };
         var t = $scope.request = "test";
         var isFirstStat = true;
         var opToken = "[operator]";
@@ -59,7 +64,7 @@
         };
         $scope.datePickerOpenStatus.birthDate = false;
 
-       $scope.openCalendar = function (date) {
+        $scope.openCalendar = function (date) {
             $scope.datePickerOpenStatus[date] = true;
         }
 

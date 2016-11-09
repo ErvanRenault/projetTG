@@ -2,23 +2,37 @@
     <div class="row">
         <div class="col-md-4">
             <ul class="nav nav-pills nav-stacked">
-                <li role="presentation" class="active"><a href="#" aria-controls="studenta" role="tab"
-                                                          data-toggle="pill">Student</a></li>
-                <li role="presentation"><a href="#" aria-controls="stagea" role="tab" data-toggle="pill">Stage</a></li>
-                <li role="presentation"><a href="#" aria-controls="companya" role="tab" data-toggle="pill">Company</a>
+                <li role="presentation" class="{{hide=='student' && 'active'}}"><a aria-controls="studenta" role="tab"
+                                                                                   data-toggle="pill"
+                                                                                   ng-click="show('student')">Student</a>
                 </li>
-                <li role="presentation"><a href="#" aria-controls="teachera" role="tab" data-toggle="pill">Teacher</a>
+                <li role="presentation" class="{{hide=='stage' && 'active'}}"><a aria-controls="stagea" role="tab"
+                                                                                 data-toggle="pill"
+                                                                                 ng-click="show('stage')">Stage</a></li>
+                <li role="presentation" class="{{hide=='company' && 'active'}}"><a aria-controls="companya" role="tab"
+                                                                                   data-toggle="pill"
+                                                                                   ng-click="show('company')">Company</a>
                 </li>
-                <li role="presentation"><a href="#" aria-controls="contacta" role="tab" data-toggle="pill">Contact</a>
+                <li role="presentation" class="{{hide=='teacher' && 'active'}}"><a aria-controls="teachera" role="tab"
+                                                                                   data-toggle="pill"
+                                                                                   ng-click="show('teacher')">Teacher</a>
                 </li>
-                <li role="presentation"><a href="#" aria-controls="conventiona" role="tab"
-                                           data-toggle="pill">Convention</a></li>
-                <li role="presentation"><a href="#" aria-controls="enquetea" role="tab" data-toggle="pill">Enquete</a>
+                <li role="presentation" class="{{hide=='contact' && 'active'}}"><a aria-controls="contacta" role="tab"
+                                                                                   data-toggle="pill"
+                                                                                   ng-click="show('contact')">Contact</a>
+                </li>
+                <li role="presentation" class="{{hide=='convention' && 'active'}}"><a aria-controls="conventiona"
+                                                                                      role="tab" data-toggle="pill"
+                                                                                      ng-click="show('convention')">Convention</a>
+                </li>
+                <li role="presentation" class="{{hide=='enquete' && 'active'}}"><a aria-controls="enquetea" role="tab"
+                                                                                   data-toggle="pill"
+                                                                                   ng-click="show('enquete')">Enquete</a>
                 </li>
             </ul>
         </div>
-        <div class="col-md-8 tab-content">
-            <div role="tabpanel" class="tab-pane active" id="studenta">
+        <div class="col-md-8">
+            <div ng-show="hide=='student'" id="studenta">
                 <form class="form-horizontal">
                     <fieldset>
 
@@ -110,12 +124,103 @@
                 <br>
                 request = {{request}}
             </div>
-            <div role="tabpanel" class="tab-pane" id="stagea">...</div>
-            <div role="tabpanel" class="tab-pane" id="companya">...</div>
-            <div role="tabpanel" class="tab-pane" id="teachera">...</div>
-            <div role="tabpanel" class="tab-pane" id="contacta">...</div>
-            <div role="tabpanel" class="tab-pane" id="conventiona">...</div>
-            <div role="tabpanel" class="tab-pane" id="enquetea">...</div>
+            <div ng-show="hide=='stage'" id="stagea">
+                <form class="form-horizontal">
+                    <fieldset>
+
+                        <!-- Form Name -->
+                        <legend>Student Filter</legend>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="lastname">Student First Name</label>
+                            <div class="col-md-4">
+                                <input id="lastname" name="lastname" class="form-control input-md" type="text"
+                                       ng-model="lastname">
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="Student Name">Student Last Name</label>
+                            <div class="col-md-4">
+                                <input id="Student Name" name="Student Name" class="form-control input-md" type="text"
+                                       ng-model="firstname">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="speciality">Speciality</label>
+                            <div class="col-md-4">
+                                <input id="speciality" name="speciality" placeholder="" class="form-control input-md"
+                                       type="text" ng-model="speciality">
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="phone">Phone</label>
+                            <div class="col-md-4">
+                                <input id="phone" name="phone" placeholder="placeholder" class="form-control input-md"
+                                       type="text" ng-model="phone">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="mail">Mail</label>
+                            <div class="col-md-4">
+                                <input id="mail" name="mail" placeholder="placeholder" class="form-control input-md"
+                                       type="text" ng-model="mail">
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="address">Address</label>
+                            <div class="col-md-4">
+                                <input id="address" name="address" placeholder="placeholder"
+                                       class="form-control input-md" type="text" ng-model="address">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="address">BirthDate</label>
+                            <div class="col-md-2">
+                                <select name="sbirthdate" ng-model="birthdateope">
+                                    <option selected="selected" value="eq">=</option>
+                                    <option value="infeq"><=</option>
+                                    <option value="supeq">>=</option>
+                                    <option value="inf"><</option>
+                                    <option value="sup">></option>
+                                </select>
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <datepicker date-format="shortDate">
+                                        <input ng-model="birthdate" type="text"/>
+                                    </datepicker>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </fieldset>
+                </form>
+                <button id="singlebuttonstage" name="singlebutton" class="btn btn-primary" ng-click="buildRequest()">Search
+                </button>
+                <br>
+                request = {{request}}
+            </div>
+            <div ng-show="hide=='company'" id="companya">...</div>
+            <div ng-show="hide=='teacher'" id="teachera">...</div>
+            <div ng-show="hide=='contact'" id="contacta">...</div>
+            <div ng-show="hide=='convention'" id="conventiona">...</div>
+            <div ng-show="hide=='enquetes'" id="enquetea">...</div>
         </div>
     </div>
     <div class="row">
@@ -123,7 +228,7 @@
         <table class="jh-table table table-striped">
             <thead>
             <tr>
-                <th><span>ID</span></th>
+                <th><span>ID {{hide=='stage'}}</span></th>
                 <th><span>First Name</span></th>
                 <th><span>Last Name</span></th>
                 <th><span>Speciality</span></th>
