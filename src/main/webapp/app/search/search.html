@@ -32,6 +32,7 @@
             </ul>
         </div>
         <div class="col-md-8">
+
             <div ng-show="hide=='student'" id="studenta">
                 <form class="form-horizontal">
                     <fieldset>
@@ -41,64 +42,58 @@
 
                         <!-- Text input-->
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="lastname">Student First Name</label>
+                            <label class="col-md-4 control-label">Student First Name</label>
                             <div class="col-md-4">
-                                <input id="lastname" name="lastname" class="form-control input-md" type="text"
-                                       ng-model="lastname">
+                                <input ng-model="student.lastname">
                             </div>
                         </div>
 
                         <!-- Text input-->
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="Student Name">Student Last Name</label>
+                            <label class="col-md-4 control-label">Student Last Name</label>
                             <div class="col-md-4">
-                                <input id="Student Name" name="Student Name" class="form-control input-md" type="text"
-                                       ng-model="firstname">
-
-                            </div>
-                        </div>
-
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="speciality">Speciality</label>
-                            <div class="col-md-4">
-                                <input id="speciality" name="speciality" placeholder="" class="form-control input-md"
-                                       type="text" ng-model="speciality">
-                            </div>
-                        </div>
-
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="phone">Phone</label>
-                            <div class="col-md-4">
-                                <input id="phone" name="phone" placeholder="placeholder" class="form-control input-md"
-                                       type="text" ng-model="phone">
+                                <input ng-model="student.firstname">
 
                             </div>
                         </div>
 
                         <!-- Text input-->
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="mail">Mail</label>
+                            <label class="col-md-4 control-label">Speciality</label>
                             <div class="col-md-4">
-                                <input id="mail" name="mail" placeholder="placeholder" class="form-control input-md"
-                                       type="text" ng-model="mail">
+                                <input type="text" ng-model="student.speciality">
                             </div>
                         </div>
 
                         <!-- Text input-->
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="address">Address</label>
+                            <label class="col-md-4 control-label">Phone</label>
                             <div class="col-md-4">
-                                <input id="address" name="address" placeholder="placeholder"
-                                       class="form-control input-md" type="text" ng-model="address">
+                                <input type="text" ng-model="student.phone">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Mail</label>
+                            <div class="col-md-4">
+                                <input type="text" ng-model="student.mail">
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Address</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="student.address">
                             </div>
                         </div>
                         <!-- Text input-->
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="address">BirthDate</label>
+                            <label class="col-md-4 control-label">BirthDate</label>
                             <div class="col-md-2">
-                                <select name="sbirthdate" ng-model="birthdateope">
+                                <select ng-model="student.birthdateope">
                                     <option selected="selected" value="eq">=</option>
                                     <option value="infeq"><=</option>
                                     <option value="supeq">>=</option>
@@ -110,87 +105,61 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <datepicker date-format="shortDate">
-                                        <input ng-model="birthdate" type="text"/>
+                                        <input ng-model="student.birthdate" type="text"/>
                                     </datepicker>
                                 </div>
                             </div>
 
                         </div>
-
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Stage</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="student.stage">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Enquete</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="student.enquete">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Teacher</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="student.teacher">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Contact</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="student.contact">
+                            </div>
+                        </div>
                     </fieldset>
                 </form>
-                <button id="singlebutton" name="singlebutton" class="btn btn-primary" ng-click="buildRequest()">Search
-                </button>
+                <button class="btn btn-primary" ng-click="buildRequest('student')">Search</button>
                 <br>
                 request = {{request}}
+
+
             </div>
+
             <div ng-show="hide=='stage'" id="stagea">
                 <form class="form-horizontal">
                     <fieldset>
 
                         <!-- Form Name -->
-                        <legend>Student Filter</legend>
+                        <legend>Stage Filter</legend>
 
                         <!-- Text input-->
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="lastname">Student First Name</label>
-                            <div class="col-md-4">
-                                <input id="lastname" name="lastname" class="form-control input-md" type="text"
-                                       ng-model="lastname">
-                            </div>
-                        </div>
-
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="Student Name">Student Last Name</label>
-                            <div class="col-md-4">
-                                <input id="Student Name" name="Student Name" class="form-control input-md" type="text"
-                                       ng-model="firstname">
-
-                            </div>
-                        </div>
-
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="speciality">Speciality</label>
-                            <div class="col-md-4">
-                                <input id="speciality" name="speciality" placeholder="" class="form-control input-md"
-                                       type="text" ng-model="speciality">
-                            </div>
-                        </div>
-
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="phone">Phone</label>
-                            <div class="col-md-4">
-                                <input id="phone" name="phone" placeholder="placeholder" class="form-control input-md"
-                                       type="text" ng-model="phone">
-
-                            </div>
-                        </div>
-
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="mail">Mail</label>
-                            <div class="col-md-4">
-                                <input id="mail" name="mail" placeholder="placeholder" class="form-control input-md"
-                                       type="text" ng-model="mail">
-                            </div>
-                        </div>
-
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="address">Address</label>
-                            <div class="col-md-4">
-                                <input id="address" name="address" placeholder="placeholder"
-                                       class="form-control input-md" type="text" ng-model="address">
-                            </div>
-                        </div>
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="address">BirthDate</label>
+                            <label class="col-md-4 control-label">Start Date</label>
                             <div class="col-md-2">
-                                <select name="sbirthdate" ng-model="birthdateope">
+                                <select ng-model="birthdateope">
                                     <option selected="selected" value="eq">=</option>
                                     <option value="infeq"><=</option>
                                     <option value="supeq">>=</option>
@@ -202,67 +171,569 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <datepicker date-format="shortDate">
-                                        <input ng-model="birthdate" type="text"/>
+                                        <input ng-model="startdate" type="text"/>
                                     </datepicker>
                                 </div>
                             </div>
 
                         </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">End Date</label>
+                            <div class="col-md-2">
+                                <select ng-model="birthdateope">
+                                    <option selected="selected" value="eq">=</option>
+                                    <option value="infeq"><=</option>
+                                    <option value="supeq">>=</option>
+                                    <option value="inf"><</option>
+                                    <option value="sup">></option>
+                                </select>
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <datepicker date-format="shortDate">
+                                        <input ng-model="enddate" type="text"/>
+                                    </datepicker>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Address</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="address">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Soon Ending</label>
+                            <div class="col-md-2">
+                                <select ng-model="birthdateope">
+                                    <option selected="selected" value="eq">=</option>
+                                    <option value="infeq"><=</option>
+                                    <option value="supeq">>=</option>
+                                    <option value="inf"><</option>
+                                    <option value="sup">></option>
+                                </select>
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <datepicker date-format="shortDate">
+                                        <input ng-model="soonending" type="text"/>
+                                    </datepicker>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Student</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="address">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Convention</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="address">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Company</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="address">
+                            </div>
+                        </div>
+
 
                     </fieldset>
                 </form>
-                <button id="singlebuttonstage" name="singlebutton" class="btn btn-primary" ng-click="buildRequest()">Search
+                <button id="singlebuttonstage" name="singlebutton" class="btn btn-primary" ng-click="buildRequest()">
+                    Search
                 </button>
                 <br>
                 request = {{request}}
             </div>
-            <div ng-show="hide=='company'" id="companya">...</div>
-            <div ng-show="hide=='teacher'" id="teachera">...</div>
-            <div ng-show="hide=='contact'" id="contacta">...</div>
-            <div ng-show="hide=='convention'" id="conventiona">...</div>
-            <div ng-show="hide=='enquetes'" id="enquetea">...</div>
+            <div ng-show="hide=='company'" id="companya">
+                <form class="form-horizontal">
+                    <fieldset>
+
+                        <!-- Form Name -->
+                        <legend>Company Filter</legend>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Id</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="address">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Numero Siret</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="address">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Name</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="address">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Adresse</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="address">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Mail</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="address">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <button class="btn btn-primary" ng-click="buildRequest()">
+                    Search
+                </button>
+                <br>
+                request = {{request}}
+
+            </div>
+            <div ng-show="hide=='teacher'" id="teachera">
+                <form class="form-horizontal">
+                    <fieldset>
+
+                        <!-- Form Name -->
+                        <legend>Teacher Filter</legend>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Id</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="address">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Nom</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="address">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Prenom</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="address">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <button class="btn btn-primary" ng-click="buildRequest()">
+                    Search
+                </button>
+                <br>
+                request = {{request}}
+
+            </div>
+            <div ng-show="hide=='contact'" id="contacta">
+                <form class="form-horizontal">
+                    <fieldset>
+
+                        <!-- Form Name -->
+                        <legend>Contact Filter</legend>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Id</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="address">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Nom</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="address">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Prenom</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="address">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Mail</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="address">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Telephone</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="address">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Company</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="address">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <button class="btn btn-primary" ng-click="buildRequest()">
+                    Search
+                </button>
+                <br>
+                request = {{request}}
+            </div>
+            <div ng-show="hide=='convention'" id="conventiona">
+                <form class="form-horizontal">
+                    <fieldset>
+
+                        <!-- Form Name -->
+                        <legend>Convention Filter</legend>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Sujet</label>
+                            <div class="col-md-4">
+                                <input ng-model="lastname">
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Student signature</label>
+                            <div class="col-md-4">
+                                <input type="checkbox" checked><br>
+
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Company signature</label>
+                            <div class="col-md-4">
+                                <input type="checkbox" checked><br>
+
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">University signature</label>
+                            <div class="col-md-4">
+                                <input type="checkbox" checked><br>
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Salaire</label>
+                            <div class="col-md-4">
+                                <input ng-model="lastname">
+
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <button class="btn btn-primary" ng-click="buildRequest()">Search</button>
+                <br>
+                request = {{request}}
+            </div>
+            <div ng-show="hide=='enquete'" id="enquetea">
+                <form class="form-horizontal">
+                    <fieldset>
+
+                        <!-- Form Name -->
+                        <legend>Enquete Filter</legend>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Id</label>
+                            <div class="col-md-4">
+                                <input ng-model="lastname">
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Nom société</label>
+                            <div class="col-md-4">
+                                <input ng-model="firstname">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Phone</label>
+                            <div class="col-md-4">
+                                <input type="text" ng-model="speciality">
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Email</label>
+                            <div class="col-md-4">
+                                <input type="text" ng-model="phone">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Embauché</label>
+                            <div class="col-md-4">
+                                <input type="checkbox" checked><br>
+
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Salaire du stage</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="address">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Salaire si embauche</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="address">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Comment</label>
+                            <div class="col-md-4">
+                                <input class="form-control input-md" type="text" ng-model="address">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <button class="btn btn-primary" ng-click="buildRequest()">Search</button>
+                <br>
+                request = {{request}}
+            </div>
         </div>
     </div>
     <div class="row">
+        <div ng-show="hide=='student'">
+            <table class="jh-table table table-striped">
+                <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>First Name</span></th>
+                    <th><span>Last Name</span></th>
+                    <th><span>Speciality</span></th>
+                    <th><span>Mail</span></th>
+                    <th><span>Phone</span></th>
+                    <th><span>Adress</span></th>
+                    <th><span>Birth Date</span></th>
+                    <th><span>Stage</span></th>
+                    <th><span>Teacher</span></th>
+                    <th><span>Contact</span></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="student in students track by student.id">
+                    <td><a ui-sref="student-detail({id:student.id})">{{student.id}}</a></td>
+                    <td>{{student.firstName}}</td>
+                    <td>{{student.lastName}}</td>
+                    <td>{{student.speciality}}</td>
+                    <td>{{student.mail}}</td>
+                    <td>{{student.phone}}</td>
+                    <td>{{student.adress}}</td>
+                    <td>{{student.birthDate | date:'medium'}}</td>
+                    <td>
+                        <a ui-sref="stage-detail({id:student.stage.id})">{{student.stage.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="teacher-detail({id:student.teacher.id})">{{student.teacher.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="contact-detail({id:student.contact.id})">{{student.contact.id}}</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div ng-show="hide=='stage'">
+            <table class="jh-table table table-striped">
+                <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Start Date</span></th>
+                    <th><span>End Date</span></th>
+                    <th><span>Adress</span></th>
+                    <th><span>Soon Ending</span></th>
+                    <th><span>Student</span></th>
+                    <th><span>Convention</span></th>
+                    <th><span>Company</span></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="stage in stages track by stage.id">
+                    <td><a ui-sref="stage-detail({id:stage.id})">{{stage.id}}</a></td>
+                    <td>{{stage.startDate | date:'medium'}}</td>
+                    <td>{{stage.endDate | date:'medium'}}</td>
+                    <td>{{stage.adress}}</td>
+                    <td>{{stage.soonEnding | date:'medium'}}</td>
+                    <td>{{stage.student}}</td>
+                    <td>
+                        <a ui-sref="convention-detail({id:stage.convention.id})">{{stage.convention.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="company-detail({id:stage.company.id})">{{stage.company.id}}</a>
+                    </td>
 
-        <table class="jh-table table table-striped">
-            <thead>
-            <tr>
-                <th><span>ID {{hide=='stage'}}</span></th>
-                <th><span>First Name</span></th>
-                <th><span>Last Name</span></th>
-                <th><span>Speciality</span></th>
-                <th><span>Mail</span></th>
-                <th><span>Phone</span></th>
-                <th><span>Adress</span></th>
-                <th><span>Birth Date</span></th>
-                <th><span>Stage</span></th>
-                <th><span>Teacher</span></th>
-                <th><span>Contact</span></th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="student in students track by student.id">
-                <td><a ui-sref="student-detail({id:student.id})">{{student.id}}</a></td>
-                <td>{{student.firstName}}</td>
-                <td>{{student.lastName}}</td>
-                <td>{{student.speciality}}</td>
-                <td>{{student.mail}}</td>
-                <td>{{student.phone}}</td>
-                <td>{{student.adress}}</td>
-                <td>{{student.birthDate | date:'medium'}}</td>
-                <td>
-                    <a ui-sref="stage-detail({id:student.stage.id})">{{student.stage.id}}</a>
-                </td>
-                <td>
-                    <a ui-sref="teacher-detail({id:student.teacher.id})">{{student.teacher.id}}</a>
-                </td>
-                <td>
-                    <a ui-sref="contact-detail({id:student.contact.id})">{{student.contact.id}}</a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div ng-show="hide=='company'">
+            <table class="jh-table table table-striped">
+                <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Siret</span></th>
+                    <th><span>Name</span></th>
+                    <th><span>Adress</span></th>
+                    <th><span>Mail</span></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="company in companies track by company.id">
+                    <td><a ui-sref="company-detail({id:company.id})">{{company.id}}</a></td>
+                    <td>{{company.siret}}</td>
+                    <td>{{company.name}}</td>
+                    <td>{{company.adress}}</td>
+                    <td>{{company.mail}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div ng-show="hide=='teacher'">
+            <table class="jh-table table table-striped">
+                <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>First Name</span></th>
+                    <th><span>Last Name</span></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="teacher in teachers track by teacher.id">
+                    <td><a ui-sref="teacher-detail({id:teacher.id})">{{teacher.id}}</a></td>
+                    <td>{{teacher.firstName}}</td>
+                    <td>{{teacher.lastName}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div ng-show="hide=='contact'">
+            <table class="jh-table table table-striped">
+                <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>First Name</span></th>
+                    <th><span>Surname</span></th>
+                    <th><span>Mail</span></th>
+                    <th><span>Phone Number</span></th>
+                    <th><span>Company</span></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="contact in vm.contacts track by contact.id">
+                    <td><a ui-sref="contact-detail({id:contact.id})">{{contact.id}}</a></td>
+                    <td>{{contact.firstName}}</td>
+                    <td>{{contact.surname}}</td>
+                    <td>{{contact.mail}}</td>
+                    <td>{{contact.phoneNumber}}</td>
+                    <td>
+                        <a ui-sref="company-detail({id:contact.company.id})">{{contact.company.id}}</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div ng-show="hide=='convention'">
+
+            <table class="jh-table table table-striped">
+                <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Sujet</span></th>
+                    <th><span>Student Signature</span></th>
+                    <th><span>Contact Signature</span></th>
+                    <th><span>University Signature</span></th>
+                    <th><span>Salary</span></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="convention in vm.conventions track by convention.id">
+                    <td><a ui-sref="convention-detail({id:convention.id})">{{convention.id}}</a></td>
+                    <td>{{convention.sujet}}</td>
+                    <td>{{convention.studentSignature}}</td>
+                    <td>{{convention.contactSignature}}</td>
+                    <td>{{convention.universitySignature}}</td>
+                    <td>{{convention.salary}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div ng-show="hide=='enquete'">
+            <table class="jh-table table table-striped">
+                <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Nom Societe</span></th>
+                    <th><span>Phone</span></th>
+                    <th><span>Email</span></th>
+                    <th><span>Stay</span></th>
+                    <th><span>Internship Salary</span></th>
+                    <th><span>Salary</span></th>
+                    <th><span>Comment</span></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="enquete in enquetes track by enquete.id">
+                    <td><a ui-sref="enquete-detail({id:enquete.id})">{{enquete.id}}</a></td>
+                    <td>{{enquete.nomSociete}}</td>
+                    <td>{{enquete.phone}}</td>
+                    <td>{{enquete.email}}</td>
+                    <td>{{enquete.stay}}</td>
+                    <td>{{enquete.internshipSalary}}</td>
+                    <td>{{enquete.salary}}</td>
+                    <td>{{enquete.comment}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

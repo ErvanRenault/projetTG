@@ -105,7 +105,7 @@ public class SearchResource {
             }
             String op = studentsearch.getDateOpe();
 
-            if (ok && d2 != null){
+            if (ok && d2 != null && d != null){
                 System.out.println(op);
                 System.out.println(d.toString());
                 System.out.println(d2.toString());
@@ -215,7 +215,6 @@ public class SearchResource {
         public StudentSearchItem(String request) {
             StringTokenizer st = new StringTokenizer(request, "||");
             while (st.hasMoreElements()) {
-                System.out.println(st.countTokens());
                 String temp = st.nextToken();
                 HashMap<String, String> list = listToken(temp);
                 processToken(list);
@@ -229,38 +228,33 @@ public class SearchResource {
                 switch (temp) {
                     case "firstname":
                         firstname = tokenmap.get("[compareToken]");
-                        System.out.println(firstname);
                         break;
                     case "lastname":
                         lastname = tokenmap.get("[compareToken]");
-                        System.out.println(lastname);
                         break;
                     case "speciality":
                         speciality = tokenmap.get("[compareToken]");
-                        System.out.println(speciality);
                         break;
                     case "phone":
                         phone = tokenmap.get("[compareToken]");
-                        System.out.println(phone);
                         break;
                     case "mail":
                         mail = tokenmap.get("[compareToken]");
-                        System.out.println(mail);
                         break;
                     case "address":
                         address = tokenmap.get("[compareToken]");
-                        System.out.println(address);
                         break;
                     case "birthdate":
                         String datestr = tokenmap.get("[compareToken]");
-                        dateOpe = tokenmap.get("[operator]");
-                        DateFormat format = new SimpleDateFormat("MM/d/yy", Locale.ENGLISH);
-                        try {
-                            date = format.parse(datestr);
-                        } catch (ParseException e) {
-                            e.printStackTrace();
+                        if(datestr != ""){
+                            dateOpe = tokenmap.get("[operator]");
+                            DateFormat format = new SimpleDateFormat("MM/d/yy", Locale.ENGLISH);
+                            try {
+                                date = format.parse(datestr);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
                         }
-                        System.out.println(date.toString());
                         break;
                 }
             }
