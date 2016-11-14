@@ -9,17 +9,71 @@
 
     function SearchController($scope, $http) {
         $scope.student = {};
-        $scope.student.lastname = "test";
-        $scope.student.firstname = "test";
-        $scope.student.speciality = "test";
-        $scope.student.phone = "test";
-        $scope.student.mail = "test";
-        $scope.student.address = "test";
+        $scope.student.id = "";
+        $scope.student.lastname = "";
+        $scope.student.lastname = "";
+        $scope.student.firstname = "";
+        $scope.student.speciality = "";
+        $scope.student.phone = "";
+        $scope.student.mail = "";
+        $scope.student.address = "";
         $scope.student.birthdate = "";
         $scope.student.birthdateope = "";
+        $scope.student.stage = "";
+        $scope.student.enquete = "";
+        $scope.student.teacher = "";
+        $scope.student.contact = "";
 
+        $scope.stage = {};
+        $scope.stage.id = "";
+        $scope.stage.startDate = "";
+        $scope.stage.startDateOpe = "";
+        $scope.stage.endDate = "";
+        $scope.stage.endDateOpe = "";
+        $scope.stage.address = "";
+        $scope.stage.endingDateOpe = "";
+        $scope.stage.endingDate = "";
+        $scope.stage.student = "";
+        $scope.stage.convention = "";
+        $scope.stage.company = "";
 
+        $scope.company = {};
+        $scope.company.id = "";
+        $scope.company.siret = "";
+        $scope.company.name = "";
+        $scope.company.address = "";
+        $scope.company.mail = "";
 
+        $scope.teacher = {};
+        $scope.teacher.id = "";
+        $scope.teacher.firstname = "";
+        $scope.teacher.lastname = "";
+
+        $scope.contact = {};
+        $scope.contact.id = "";
+        $scope.contact.lastname = "";
+        $scope.contact.firstname = "";
+        $scope.contact.mail = "";
+        $scope.contact.phone = "";
+        $scope.contact.company = "";
+
+        $scope.convention = {};
+        $scope.convention.id = "";
+        $scope.convention.sujet = "";
+        $scope.convention.studentSigned = "false";
+        $scope.convention.companySigned = "false";
+        $scope.convention.universitySigned = "false";
+        $scope.convention.salary = "";
+
+        $scope.enquete = {};
+        $scope.enquete.id = "";
+        $scope.enquete.name = "";
+        $scope.enquete.phone = "";
+        $scope.enquete.mail = "";
+        $scope.enquete.hired = "false";
+        $scope.enquete.stagePledge = "";
+        $scope.enquete.jobPledge = "";
+        $scope.enquete.comment = "";
 
 
         $scope.datePickerOpenStatus = {};
@@ -37,16 +91,34 @@
 
         $scope.buildRequest = function (str) {
             isFirstStat = true;
-            $scope.request = "";
-            switch (str){
+            $scope.request = str + "|||";
+            switch (str) {
                 case 'student':
                     buildStudentRequest();
+                    break;
+                case 'stage':
+                    buildStageRequest();
+                    break;
+                case 'company':
+                    buildCompanyRequest();
+                    break;
+                case 'teacher':
+                    buildTeacherRequest();
+                    break;
+                case 'contact':
+                    buildContactRequest();
+                    break;
+                case 'convention':
+                    buildConventionRequest();
+                    break;
+                case 'enquete':
+                    buildEnqueteRequest();
                     break;
             }
 
 
             $http.get('api/search?request=' + $scope.request).then(function (response) {
-                switch (str){
+                switch (str) {
                     case 'student':
                         $scope.students = response.data;
                         break;
@@ -75,7 +147,7 @@
 
 
             if ($scope.student.lastname != "") {
-                $scope.request += appendAnd() + fieldToken + "lastname" + opToken + "=" + compareToken + $scope.student.lastname;
+                $scope.request += appendAnd() + fieldToken + "startDate" + opToken + $scope.student.birthdateope + compareToken + $scope.student.birthdate;
             }
             if ($scope.student.firstname != "") {
                 $scope.request += appendAnd() + fieldToken + "firstname" + opToken + "=" + compareToken + $scope.student.firstname;
@@ -94,6 +166,44 @@
             }
             if ($scope.student.birthDate != "") {
                 $scope.request += appendAnd() + fieldToken + "birthdate" + opToken + $scope.student.birthdateope + compareToken + $scope.student.birthdate;
+            }
+            if ($scope.student.stage != "") {
+                $scope.request += appendAnd() + fieldToken + "stage" + opToken + "=" + compareToken + $scope.student.stage;
+            }
+            if ($scope.student.enquete != "") {
+                $scope.request += appendAnd() + fieldToken + "enquete" + opToken + "=" + compareToken + $scope.student.enquete;
+            }
+            if ($scope.student.teacher != "") {
+                $scope.request += appendAnd() + fieldToken + "teacher" + opToken + "=" + compareToken + $scope.student.teacher;
+            }
+            if ($scope.student.contact != "") {
+                $scope.request += appendAnd() + fieldToken + "contact" + opToken + "=" + compareToken + $scope.student.contact;
+            }
+
+        }
+
+        function buildStageRequest() {
+
+            if ($scope.stage.startDate != "") {
+                $scope.request += appendAnd() + fieldToken + "startDate" + opToken + $scope.stage.startDateOpe + compareToken + $scope.stage.startDate;
+            }
+            if ($scope.stage.endDate != "") {
+                $scope.request += appendAnd() + fieldToken + "endDate" + opToken + $scope.stage.endDateOpe + compareToken + $scope.stage.startDate;
+            }
+            if ($scope.stage.address != "") {
+                $scope.request += appendAnd() + fieldToken + "address" + opToken + "=" + compareToken + $scope.stage.address;
+            }
+            if ($scope.stage.endingDate != "") {
+                $scope.request += appendAnd() + fieldToken + "endingDate" + opToken + $scope.stage.endingDateOpe + compareToken + $scope.stage.endingDate;
+            }
+            if ($scope.stage.student != "") {
+                $scope.request += appendAnd() + fieldToken + "student" + opToken + "=" + compareToken + $scope.stage.student;
+            }
+            if ($scope.stage.convention != "") {
+                $scope.request += appendAnd() + fieldToken + "convention" + opToken + "=" + compareToken + $scope.stage.convention;
+            }
+            if ($scope.stage.company != "") {
+                $scope.request += appendAnd() + fieldToken + "company" + opToken + "="  + compareToken + $scope.stage.company;
             }
         }
     }

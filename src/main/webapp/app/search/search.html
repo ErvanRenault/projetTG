@@ -33,7 +33,7 @@
         </div>
         <div class="col-md-8">
 
-            <div ng-show="hide=='student'" id="studenta">
+            <div ng-show="hide=='student'" >
                 <form class="form-horizontal">
                     <fieldset>
 
@@ -113,28 +113,28 @@
                         </div>
                         <!-- Text input-->
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Stage</label>
+                            <label class="col-md-4 control-label">Stage ID</label>
                             <div class="col-md-4">
                                 <input class="form-control input-md" type="text" ng-model="student.stage">
                             </div>
                         </div>
                         <!-- Text input-->
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Enquete</label>
+                            <label class="col-md-4 control-label">Enquete ID</label>
                             <div class="col-md-4">
                                 <input class="form-control input-md" type="text" ng-model="student.enquete">
                             </div>
                         </div>
                         <!-- Text input-->
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Teacher</label>
+                            <label class="col-md-4 control-label">Teacher ID</label>
                             <div class="col-md-4">
                                 <input class="form-control input-md" type="text" ng-model="student.teacher">
                             </div>
                         </div>
                         <!-- Text input-->
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Contact</label>
+                            <label class="col-md-4 control-label">Contact ID</label>
                             <div class="col-md-4">
                                 <input class="form-control input-md" type="text" ng-model="student.contact">
                             </div>
@@ -147,19 +147,16 @@
 
 
             </div>
-
-            <div ng-show="hide=='stage'" id="stagea">
+            <div ng-show="hide=='stage'" >
                 <form class="form-horizontal">
                     <fieldset>
-
                         <!-- Form Name -->
                         <legend>Stage Filter</legend>
-
                         <!-- Text input-->
                         <div class="form-group">
                             <label class="col-md-4 control-label">Start Date</label>
                             <div class="col-md-2">
-                                <select ng-model="birthdateope">
+                                <select ng-model="stage.startDateOpe">
                                     <option selected="selected" value="eq">=</option>
                                     <option value="infeq"><=</option>
                                     <option value="supeq">>=</option>
@@ -171,7 +168,7 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <datepicker date-format="shortDate">
-                                        <input ng-model="startdate" type="text"/>
+                                        <input ng-model="stage.startDate" type="text"/>
                                     </datepicker>
                                 </div>
                             </div>
@@ -181,7 +178,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">End Date</label>
                             <div class="col-md-2">
-                                <select ng-model="birthdateope">
+                                <select ng-model="stage.endDateOpe">
                                     <option selected="selected" value="eq">=</option>
                                     <option value="infeq"><=</option>
                                     <option value="supeq">>=</option>
@@ -192,8 +189,8 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="input-group">
-                                    <datepicker date-format="shortDate">
-                                        <input ng-model="enddate" type="text"/>
+                                    <datepicker date-format="stage.endDate">
+                                        <input ng-model="endDate" type="text"/>
                                     </datepicker>
                                 </div>
                             </div>
@@ -203,14 +200,15 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Address</label>
                             <div class="col-md-4">
-                                <input class="form-control input-md" type="text" ng-model="address">
+                                <input class="form-control input-md" type="text" ng-model="stage.address">
                             </div>
                         </div>
+
                         <!-- Text input-->
                         <div class="form-group">
                             <label class="col-md-4 control-label">Soon Ending</label>
                             <div class="col-md-2">
-                                <select ng-model="birthdateope">
+                                <select ng-model="stage.endingDateOpe">
                                     <option selected="selected" value="eq">=</option>
                                     <option value="infeq"><=</option>
                                     <option value="supeq">>=</option>
@@ -222,7 +220,7 @@
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <datepicker date-format="shortDate">
-                                        <input ng-model="soonending" type="text"/>
+                                        <input ng-model="stage.endingDate" type="text"/>
                                     </datepicker>
                                 </div>
                             </div>
@@ -231,34 +229,34 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Student</label>
                             <div class="col-md-4">
-                                <input class="form-control input-md" type="text" ng-model="address">
+                                <input class="form-control input-md" type="text" ng-model="stage.student">
                             </div>
                         </div>
                         <!-- Text input-->
                         <div class="form-group">
                             <label class="col-md-4 control-label">Convention</label>
                             <div class="col-md-4">
-                                <input class="form-control input-md" type="text" ng-model="address">
+                                <input class="form-control input-md" type="text" ng-model="stage.convention">
                             </div>
                         </div>
                         <!-- Text input-->
                         <div class="form-group">
                             <label class="col-md-4 control-label">Company</label>
                             <div class="col-md-4">
-                                <input class="form-control input-md" type="text" ng-model="address">
+                                <input class="form-control input-md" type="text" ng-model="stage.company">
                             </div>
                         </div>
 
 
                     </fieldset>
                 </form>
-                <button id="singlebuttonstage" name="singlebutton" class="btn btn-primary" ng-click="buildRequest()">
+                <button id="singlebuttonstage" name="singlebutton" class="btn btn-primary" ng-click="buildRequest('stage')">
                     Search
                 </button>
                 <br>
                 request = {{request}}
             </div>
-            <div ng-show="hide=='company'" id="companya">
+            <div ng-show="hide=='company'" >
                 <form class="form-horizontal">
                     <fieldset>
 
@@ -269,47 +267,47 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Id</label>
                             <div class="col-md-4">
-                                <input class="form-control input-md" type="text" ng-model="address">
+                                <input class="form-control input-md" type="text" ng-model="company.id">
                             </div>
                         </div>
                         <!-- Text input-->
                         <div class="form-group">
                             <label class="col-md-4 control-label">Numero Siret</label>
                             <div class="col-md-4">
-                                <input class="form-control input-md" type="text" ng-model="address">
+                                <input class="form-control input-md" type="text" ng-model="company.siret">
                             </div>
                         </div>
                         <!-- Text input-->
                         <div class="form-group">
                             <label class="col-md-4 control-label">Name</label>
                             <div class="col-md-4">
-                                <input class="form-control input-md" type="text" ng-model="address">
+                                <input class="form-control input-md" type="text" ng-model="company.name">
                             </div>
                         </div>
                         <!-- Text input-->
                         <div class="form-group">
                             <label class="col-md-4 control-label">Adresse</label>
                             <div class="col-md-4">
-                                <input class="form-control input-md" type="text" ng-model="address">
+                                <input class="form-control input-md" type="text" ng-model="company.address">
                             </div>
                         </div>
                         <!-- Text input-->
                         <div class="form-group">
                             <label class="col-md-4 control-label">Mail</label>
                             <div class="col-md-4">
-                                <input class="form-control input-md" type="text" ng-model="address">
+                                <input class="form-control input-md" type="text" ng-model="company.mail">
                             </div>
                         </div>
                     </fieldset>
                 </form>
-                <button class="btn btn-primary" ng-click="buildRequest()">
+                <button class="btn btn-primary" ng-click="buildRequest('company')">
                     Search
                 </button>
                 <br>
                 request = {{request}}
 
             </div>
-            <div ng-show="hide=='teacher'" id="teachera">
+            <div ng-show="hide=='teacher'">
                 <form class="form-horizontal">
                     <fieldset>
 
@@ -320,33 +318,33 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Id</label>
                             <div class="col-md-4">
-                                <input class="form-control input-md" type="text" ng-model="address">
+                                <input class="form-control input-md" type="text" ng-model="teacher.id">
                             </div>
                         </div>
                         <!-- Text input-->
                         <div class="form-group">
                             <label class="col-md-4 control-label">Nom</label>
                             <div class="col-md-4">
-                                <input class="form-control input-md" type="text" ng-model="address">
+                                <input class="form-control input-md" type="text" ng-model="teacher.lastname">
                             </div>
                         </div>
                         <!-- Text input-->
                         <div class="form-group">
                             <label class="col-md-4 control-label">Prenom</label>
                             <div class="col-md-4">
-                                <input class="form-control input-md" type="text" ng-model="address">
+                                <input class="form-control input-md" type="text" ng-model="teacher.firstname">
                             </div>
                         </div>
                     </fieldset>
                 </form>
-                <button class="btn btn-primary" ng-click="buildRequest()">
+                <button class="btn btn-primary" ng-click="buildRequest('teacher')">
                     Search
                 </button>
                 <br>
                 request = {{request}}
 
             </div>
-            <div ng-show="hide=='contact'" id="contacta">
+            <div ng-show="hide=='contact'">
                 <form class="form-horizontal">
                     <fieldset>
 
@@ -357,53 +355,53 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Id</label>
                             <div class="col-md-4">
-                                <input class="form-control input-md" type="text" ng-model="address">
+                                <input class="form-control input-md" type="text" ng-model="contact.id">
                             </div>
                         </div>
                         <!-- Text input-->
                         <div class="form-group">
                             <label class="col-md-4 control-label">Nom</label>
                             <div class="col-md-4">
-                                <input class="form-control input-md" type="text" ng-model="address">
+                                <input class="form-control input-md" type="text" ng-model="contact.lastname">
                             </div>
                         </div>
                         <!-- Text input-->
                         <div class="form-group">
                             <label class="col-md-4 control-label">Prenom</label>
                             <div class="col-md-4">
-                                <input class="form-control input-md" type="text" ng-model="address">
+                                <input class="form-control input-md" type="text" ng-model="cntact.firstname">
                             </div>
                         </div>
                         <!-- Text input-->
                         <div class="form-group">
                             <label class="col-md-4 control-label">Mail</label>
                             <div class="col-md-4">
-                                <input class="form-control input-md" type="text" ng-model="address">
+                                <input class="form-control input-md" type="text" ng-model="contact.mail">
                             </div>
                         </div>
                         <!-- Text input-->
                         <div class="form-group">
                             <label class="col-md-4 control-label">Telephone</label>
                             <div class="col-md-4">
-                                <input class="form-control input-md" type="text" ng-model="address">
+                                <input class="form-control input-md" type="text" ng-model="contact.phone">
                             </div>
                         </div>
                         <!-- Text input-->
                         <div class="form-group">
                             <label class="col-md-4 control-label">Company</label>
                             <div class="col-md-4">
-                                <input class="form-control input-md" type="text" ng-model="address">
+                                <input class="form-control input-md" type="text" ng-model="contact.company">
                             </div>
                         </div>
                     </fieldset>
                 </form>
-                <button class="btn btn-primary" ng-click="buildRequest()">
+                <button class="btn btn-primary" ng-click="buildRequest('contact')">
                     Search
                 </button>
                 <br>
                 request = {{request}}
             </div>
-            <div ng-show="hide=='convention'" id="conventiona">
+            <div ng-show="hide=='convention'">
                 <form class="form-horizontal">
                     <fieldset>
 
@@ -412,9 +410,16 @@
 
                         <!-- Text input-->
                         <div class="form-group">
+                            <label class="col-md-4 control-label">Id</label>
+                            <div class="col-md-4">
+                                <input ng-model="convetion.id">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
                             <label class="col-md-4 control-label">Sujet</label>
                             <div class="col-md-4">
-                                <input ng-model="lastname">
+                                <input ng-model="convention.sujet">
                             </div>
                         </div>
 
@@ -422,7 +427,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Student signature</label>
                             <div class="col-md-4">
-                                <input type="checkbox" checked><br>
+                                <input type="checkbox" checked ng-model="convention.studentSigned"><br>
 
                             </div>
                         </div>
@@ -430,7 +435,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Company signature</label>
                             <div class="col-md-4">
-                                <input type="checkbox" checked><br>
+                                <input type="checkbox" checked ng-model="convention.companySigned"><br>
 
                             </div>
                         </div>
@@ -438,7 +443,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">University signature</label>
                             <div class="col-md-4">
-                                <input type="checkbox" checked><br>
+                                <input type="checkbox" checked ng-model="convention.universitySigned"><br>
 
                             </div>
                         </div>
@@ -447,17 +452,17 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Salaire</label>
                             <div class="col-md-4">
-                                <input ng-model="lastname">
+                                <input ng-model="convention.salary">
 
                             </div>
                         </div>
                     </fieldset>
                 </form>
-                <button class="btn btn-primary" ng-click="buildRequest()">Search</button>
+                <button class="btn btn-primary" ng-click="buildRequest('convention')">Search</button>
                 <br>
                 request = {{request}}
             </div>
-            <div ng-show="hide=='enquete'" id="enquetea">
+            <div ng-show="hide=='enquete'" >
                 <form class="form-horizontal">
                     <fieldset>
 
@@ -468,7 +473,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Id</label>
                             <div class="col-md-4">
-                                <input ng-model="lastname">
+                                <input ng-model="enquete.id">
                             </div>
                         </div>
 
@@ -476,7 +481,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Nom société</label>
                             <div class="col-md-4">
-                                <input ng-model="firstname">
+                                <input ng-model="enquete.name">
 
                             </div>
                         </div>
@@ -485,7 +490,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Phone</label>
                             <div class="col-md-4">
-                                <input type="text" ng-model="speciality">
+                                <input type="text" ng-model="enquete.phone">
                             </div>
                         </div>
 
@@ -493,7 +498,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Email</label>
                             <div class="col-md-4">
-                                <input type="text" ng-model="phone">
+                                <input type="text" ng-model="enquete.mail">
 
                             </div>
                         </div>
@@ -502,7 +507,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Embauché</label>
                             <div class="col-md-4">
-                                <input type="checkbox" checked><br>
+                                <input type="checkbox" checked ng-model="enquete.hired"><br>
 
                             </div>
                         </div>
@@ -510,26 +515,26 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">Salaire du stage</label>
                             <div class="col-md-4">
-                                <input class="form-control input-md" type="text" ng-model="address">
+                                <input class="form-control input-md" type="text" ng-model="enquete.stagePledge">
                             </div>
                         </div>
                         <!-- Text input-->
                         <div class="form-group">
                             <label class="col-md-4 control-label">Salaire si embauche</label>
                             <div class="col-md-4">
-                                <input class="form-control input-md" type="text" ng-model="address">
+                                <input class="form-control input-md" type="text" ng-model="enquete.jobPledge">
                             </div>
                         </div>
                         <!-- Text input-->
                         <div class="form-group">
                             <label class="col-md-4 control-label">Comment</label>
                             <div class="col-md-4">
-                                <input class="form-control input-md" type="text" ng-model="address">
+                                <input class="form-control input-md" type="text" ng-model="enquete.comment">
                             </div>
                         </div>
                     </fieldset>
                 </form>
-                <button class="btn btn-primary" ng-click="buildRequest()">Search</button>
+                <button class="btn btn-primary" ng-click="buildRequest('enquete')">Search</button>
                 <br>
                 request = {{request}}
             </div>

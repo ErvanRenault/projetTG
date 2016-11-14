@@ -1,8 +1,9 @@
 package com.mycompany.myapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import com.mycompany.myapp.domain.Stage;
-import com.mycompany.myapp.domain.Student;
+import com.mycompany.myapp.domain.*;
+import com.mycompany.myapp.domain.search.StageSearchItem;
+import com.mycompany.myapp.domain.search.StudentSearchItem;
 import com.mycompany.myapp.repository.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,91 +55,265 @@ public class SearchResource {
     public List<Object> filterData(@RequestParam(value = "request", defaultValue = "") String request) {
         log.debug("REST request to get all Data");
         log.debug("searchPattern=" + request);
-
-        StudentSearchItem studentsearch = new StudentSearchItem(request);
-        log.debug(studentsearch.getLastname());
-        List<Student> students = studentRepository.findAll();
+        String[] tokens = request.split("\\|\\|\\|");
+        log.debug("length="+tokens.length);
         List<Object> res = new ArrayList<>();
-        for (Student s : students) {
-            boolean ok = true;
-            String a = s.getFirstName();
-            String b = studentsearch.getFirstname();
-            if (b != null)
-                if (!b.equals(a))
-                    ok = false;
+        if (tokens.length == 2) {
+            log.debug(tokens[0]+" "+tokens[1]);
+            switch (tokens[0]) {
+                case "student":
+                    StudentSearchItem studentsearch = new StudentSearchItem(tokens[1]);
+                    List<Student> students = studentRepository.findAll();
+                    for (Student s : students) {
+                        boolean ok = true;
+                        String a = s.getFirstName();
+                        String b = studentsearch.getFirstname();
+                        if (b != null)
+                            if (!b.equals(a))
+                                ok = false;
 
-            a = studentsearch.getLastname();
-            b = s.getLastName();
-            if (ok && b != null)
-                if (!b.equals(a))
-                    ok = false;
+                        a = studentsearch.getLastname();
+                        b = s.getLastName();
+                        if (ok && b != null)
+                            if (!b.equals(a))
+                                ok = false;
 
-            a = studentsearch.getSpeciality();
-            b = s.getSpeciality();
-            if (ok && a != null && b != null)
-                if (!b.equals(a))
-                    ok = false;
+                        a = studentsearch.getSpeciality();
+                        b = s.getSpeciality();
+                        if (ok && a != null && b != null)
+                            if (!b.equals(a))
+                                ok = false;
 
-            a = studentsearch.getPhone();
-            b = s.getPhone();
-            if (ok && a != null && b != null)
-                if (!b.equals(a))
-                    ok = false;
+                        a = studentsearch.getPhone();
+                        b = s.getPhone();
+                        if (ok && a != null && b != null)
+                            if (!b.equals(a))
+                                ok = false;
 
-            a = studentsearch.getMail();
-            b = s.getMail();
-            if (ok && a != null && b != null)
-                if (!b.equals(a))
-                    ok = false;
+                        a = studentsearch.getMail();
+                        b = s.getMail();
+                        if (ok && a != null && b != null)
+                            if (!b.equals(a))
+                                ok = false;
 
-            a = studentsearch.getAddress();
-            b = s.getAdress();
-            if (ok && b != null)
-                if (!b.equals(a))
-                    ok = false;
+                        a = studentsearch.getAddress();
+                        b = s.getAdress();
+                        if (ok && b != null)
+                            if (!b.equals(a))
+                                ok = false;
 
-            Date d = studentsearch.getDate();
-            ZonedDateTime t = s.getBirthDate();
-            Date d2 = null;
-            if(t != null){
-                d2 = Date.from(t.toInstant());
+                        a = studentsearch.getStage();
+                        Stage s2 = s.getStage();
+                        if (ok && s2 != null)
+                            if (!(s2.getId() + "").equals(a))
+                                ok = false;
+
+                        a = studentsearch.getTeacher();
+                        Teacher t2 = s.getTeacher();
+                        if (ok && t2 != null)
+                            if (!(t2.getId() + "").equals(a))
+                                ok = false;
+
+                        a = studentsearch.getEnquete();
+                        Enquete e2 = s.getEnquete();
+                        if (ok && e2 != null)
+                            if (!(e2.getId() + "").equals(a))
+                                ok = false;
+
+                        a = studentsearch.getContact();
+                        Contact c2 = s.getContact();
+                        if (ok && c2 != null)
+                            if (!(c2.getId() + "").equals(a))
+                                ok = false;
+
+                        Date d = studentsearch.getDate();
+                        ZonedDateTime t = s.getBirthDate();
+                        Date d2 = null;
+                        if (t != null) {
+                            d2 = Date.from(t.toInstant());
+                        }
+                        String op = studentsearch.getDateOpe();
+
+                        if (ok && d2 != null && d != null) {
+                            System.out.println(op);
+                            System.out.println(d.toString());
+                            System.out.println(d2.toString());
+                            switch (op) {
+                                case "eq":
+                                    if (!d.equals(d2))
+                                        ok = false;
+                                    break;
+                                case "infeq":
+                                    if (!d2.before(d))
+                                        ok = false;
+                                    break;
+                                case "supeq":
+                                    if (!d2.after(d))
+                                        ok = false;
+                                    break;
+                                case "inf":
+                                    if (!d2.after(d))
+                                        ok = false;
+                                    break;
+                                case "sup":
+                                    if (!d2.after(d))
+                                        ok = false;
+                                    break;
+                            }
+                        }
+
+                        if (ok) {
+                            System.out.println("ok");
+                            res.add(s);
+                        }
+                    }
+                    break;
+                case "stage":
+                    StageSearchItem stagesearch= new StageSearchItem(tokens[1]);
+                    List<Stage> stages = stageRepository.findAll();
+                    for (Stage s : stages) {
+                        boolean ok = true;
+                        String a = s.getAdress();
+                        String b = stagesearch.getAddress();
+                        if (b != null)
+                            if (!b.equals(a))
+                                ok = false;
+
+                        a = stagesearch.getConvention();
+                       Convention c = s.getConvention();
+                        if (ok && c != null)
+                            if (!(c.getId()+"").equals(a))
+                                ok = false;
+
+                        a = stagesearch.getCompany();
+                        Company c1 = s.getCompany();
+                        if (ok && c1 != null)
+                            if (!(c1.getId()+"").equals(a))
+                                ok = false;
+
+                        a = stagesearch.getStudent();
+                        Integer i1 = s.getStudent();
+                        if (ok && i1 != null)
+                            if (!(i1.toString()).equals(a))
+                                ok = false;
+
+                        Date d = stagesearch.getStartDate();
+                        ZonedDateTime t = s.getStartDate();
+                        Date d2 = null;
+                        if (t != null) {
+                            d2 = Date.from(t.toInstant());
+                        }
+                        String op = stagesearch.getStartDateOpe();
+
+                        if (ok && d2 != null && d != null) {
+                            System.out.println(op);
+                            System.out.println(d.toString());
+                            System.out.println(d2.toString());
+                            switch (op) {
+                                case "eq":
+                                    if (!d.equals(d2))
+                                        ok = false;
+                                    break;
+                                case "infeq":
+                                    if (!d2.before(d))
+                                        ok = false;
+                                    break;
+                                case "supeq":
+                                    if (!d2.after(d))
+                                        ok = false;
+                                    break;
+                                case "inf":
+                                    if (!d2.after(d))
+                                        ok = false;
+                                    break;
+                                case "sup":
+                                    if (!d2.after(d))
+                                        ok = false;
+                                    break;
+                            }
+                        }
+
+                        d = stagesearch.getEndDate();
+                        t = s.getEndDate();
+                        d2 = null;
+                        if (t != null) {
+                            d2 = Date.from(t.toInstant());
+                        }
+                        op = stagesearch.getEndDateOpe();
+
+                        if (ok && d2 != null && d != null) {
+                            System.out.println(op);
+                            System.out.println(d.toString());
+                            System.out.println(d2.toString());
+                            switch (op) {
+                                case "eq":
+                                    if (!d.equals(d2))
+                                        ok = false;
+                                    break;
+                                case "infeq":
+                                    if (!d2.before(d))
+                                        ok = false;
+                                    break;
+                                case "supeq":
+                                    if (!d2.after(d))
+                                        ok = false;
+                                    break;
+                                case "inf":
+                                    if (!d2.after(d))
+                                        ok = false;
+                                    break;
+                                case "sup":
+                                    if (!d2.after(d))
+                                        ok = false;
+                                    break;
+                            }
+                        }
+
+                        d = stagesearch.getSoonEnding();
+                        t = s.getSoonEnding();
+                        d2 = null;
+                        if (t != null) {
+                            d2 = Date.from(t.toInstant());
+                        }
+                        op = stagesearch.getSoonEndingOpe();
+
+                        if (ok && d2 != null && d != null) {
+                            System.out.println(op);
+                            System.out.println(d.toString());
+                            System.out.println(d2.toString());
+                            switch (op) {
+                                case "eq":
+                                    if (!d.equals(d2))
+                                        ok = false;
+                                    break;
+                                case "infeq":
+                                    if (!d2.before(d))
+                                        ok = false;
+                                    break;
+                                case "supeq":
+                                    if (!d2.after(d))
+                                        ok = false;
+                                    break;
+                                case "inf":
+                                    if (!d2.after(d))
+                                        ok = false;
+                                    break;
+                                case "sup":
+                                    if (!d2.after(d))
+                                        ok = false;
+                                    break;
+                            }
+                        }
+
+                        if (ok) {
+                            System.out.println("ok");
+                            res.add(s);
+                        }
+                    }
+                    break;
             }
-            String op = studentsearch.getDateOpe();
 
-            if (ok && d2 != null && d != null){
-                System.out.println(op);
-                System.out.println(d.toString());
-                System.out.println(d2.toString());
-                switch(op){
-                    case"eq":
-                        if(!d.equals(d2))
-                            ok = false;
-                        break;
-                    case"infeq":
-                        if(!d2.before(d))
-                            ok = false;
-                        break;
-                    case"supeq":
-                        if(!d2.after(d))
-                            ok = false;
-                        break;
-                    case"inf":
-                        if(!d2.after(d))
-                            ok = false;
-                        break;
-                    case"sup":
-                        if(!d2.after(d))
-                            ok = false;
-                        break;
-                }
-            }
-
-            if (ok) {
-                System.out.println("ok");
-                res.add(s);
-            }
         }
-        System.out.println("res=" + res.size());
         return res;
     }
 
@@ -170,128 +345,5 @@ public class SearchResource {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    class StudentSearchItem {
-        String firstname;
-        String lastname;
-        String speciality;
-        String phone;
-        String mail;
-        String address;
-        Date date;
-        String dateOpe;
 
-        public String getFirstname() {
-            return firstname;
-        }
-
-        public String getLastname() {
-            return lastname;
-        }
-
-        public String getSpeciality() {
-            return speciality;
-        }
-
-        public String getPhone() {
-            return phone;
-        }
-
-        public String getMail() {
-            return mail;
-        }
-
-        public String getAddress() {
-            return address;
-        }
-
-        public Date getDate() {
-            return date;
-        }
-
-        public String getDateOpe() {
-            return dateOpe;
-        }
-
-        public StudentSearchItem(String request) {
-            StringTokenizer st = new StringTokenizer(request, "||");
-            while (st.hasMoreElements()) {
-                String temp = st.nextToken();
-                HashMap<String, String> list = listToken(temp);
-                processToken(list);
-            }
-        }
-
-        private void processToken(HashMap<String, String> tokenmap) {
-            String temp = "";
-            temp = tokenmap.get("[field]");
-            if (temp != null) {
-                switch (temp) {
-                    case "firstname":
-                        firstname = tokenmap.get("[compareToken]");
-                        break;
-                    case "lastname":
-                        lastname = tokenmap.get("[compareToken]");
-                        break;
-                    case "speciality":
-                        speciality = tokenmap.get("[compareToken]");
-                        break;
-                    case "phone":
-                        phone = tokenmap.get("[compareToken]");
-                        break;
-                    case "mail":
-                        mail = tokenmap.get("[compareToken]");
-                        break;
-                    case "address":
-                        address = tokenmap.get("[compareToken]");
-                        break;
-                    case "birthdate":
-                        String datestr = tokenmap.get("[compareToken]");
-                        if(datestr != ""){
-                            dateOpe = tokenmap.get("[operator]");
-                            DateFormat format = new SimpleDateFormat("MM/d/yy", Locale.ENGLISH);
-                            try {
-                                date = format.parse(datestr);
-                            } catch (ParseException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        break;
-                }
-            }
-        }
-
-        private HashMap<String, String> listToken(String temp) {
-            System.out.println(temp);
-            HashMap<String, String> listFilter = new HashMap<>();
-            boolean token = false;
-            boolean value = false;
-            String tokentemp = "";
-            String valuetemp = "";
-            for (int i = 0; i < temp.length(); i++) {
-                char c = temp.charAt(i);
-                if (c == '[') {
-                    if (value) {
-                        listFilter.put(tokentemp, valuetemp);
-                        tokentemp = "";
-                        valuetemp = "";
-                    }
-                    token = true;
-                    value = false;
-
-                }
-                if (token) {
-                    tokentemp += c;
-                }
-                if (value) {
-                    valuetemp += c;
-                }
-                if (c == ']') {
-                    token = false;
-                    value = true;
-                }
-            }
-            listFilter.put(tokentemp, valuetemp);
-            return listFilter;
-        }
-    }
 }
